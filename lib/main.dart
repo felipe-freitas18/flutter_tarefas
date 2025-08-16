@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tarefas/screens/tela_inicial.dart';
+//import 'package:flutter_tarefas/screens/tela_inicial.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,9 +21,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: const InitialScreen(),
     );
   }
