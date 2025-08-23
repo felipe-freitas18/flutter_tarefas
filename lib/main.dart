@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tarefas/data/task_inherited.dart';
 import 'package:flutter_tarefas/screens/tela_inicial.dart';
 //import 'package:flutter_tarefas/screens/tela_inicial.dart';
 
@@ -22,7 +23,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const InitialScreen(),
+      home: TaskInherited(child: const InitialScreen()),
     );
   }
 }
