@@ -15,6 +15,13 @@ class Tasks extends StatefulWidget {
 class _TasksState extends State<Tasks> {
   int level = 1;
 
+  bool assetOrNetwork() {
+    if (widget.foto.contains('http')) {
+      return false;
+    }
+    return true;
+  }
+
   void levelUp() {
     setState(() {
       level++;
@@ -54,12 +61,19 @@ class _TasksState extends State<Tasks> {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(4),
-                        child: Image.asset(
-                          widget.foto,
-                          height: 100,
-                          width: 72,
-                          fit: BoxFit.cover,
-                        ),
+                        child: assetOrNetwork()
+                            ? Image.asset(
+                                widget.foto,
+                                height: 100,
+                                width: 72,
+                                fit: BoxFit.cover,
+                              )
+                            : Image.network(
+                                widget.foto,
+                                height: 100,
+                                width: 72,
+                                fit: BoxFit.cover,
+                              ),
                       ),
                     ),
                     Column(
@@ -71,7 +85,9 @@ class _TasksState extends State<Tasks> {
                           child: Text(
                             widget.nome,
                             style: const TextStyle(
-                                fontSize: 24, overflow: TextOverflow.ellipsis),
+                              fontSize: 24,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
                         Difficulty(widget.dificuldade),
@@ -90,15 +106,12 @@ class _TasksState extends State<Tasks> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Icon(Icons.arrow_drop_up),
-                              Text(
-                                'UP',
-                                style: TextStyle(fontSize: 12),
-                              ),
+                              Text('UP', style: TextStyle(fontSize: 12)),
                             ],
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -106,9 +119,7 @@ class _TasksState extends State<Tasks> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 8,
-                    ),
+                    padding: const EdgeInsets.only(left: 8),
                     child: SizedBox(
                       width: 200,
                       child: LinearProgressIndicator(
@@ -127,7 +138,7 @@ class _TasksState extends State<Tasks> {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ],
